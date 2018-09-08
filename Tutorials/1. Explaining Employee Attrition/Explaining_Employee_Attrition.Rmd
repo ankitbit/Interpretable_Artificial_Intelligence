@@ -1,0 +1,85 @@
+---
+title: "Explaining Employee Attrition"
+output: html_notebook
+---
+
+```{r loading_libraries, message=FALSE}
+library(readr)
+library(lime)
+require(randomForest)
+library(caret)
+library(doParallel)
+cl <- makeCluster(detectCores())
+registerDoParallel(cl)
+```
+
+```{r reading_data, message=FALSE}
+dataset <- read_csv("Employee-Attrition.csv")
+dataset <- na.omit(dataset)
+dataset$EmployeeCount <- NULL
+dataset$StandardHours <- NULL
+dataset$Over18 <- NULL
+
+
+#Converting outcome variable to numeric
+dataset$Attrition<-ifelse(dataset$Attrition=='No',0,1)
+
+
+dmy <- dummyVars(" ~ .", data = dataset, fullRank = TRUE)
+dataset <- data.frame(predict(dmy, newdata = dataset))
+
+dataset$Attrition <-as.factor(dataset$Attrition)
+levels(dataset$Attrition) <- c("No", "Yes")
+
+str(dataset)
+set.seed(42)
+index <- createDataPartition(dataset$Attrition, p = 0.7, list = FALSE)
+train_data <- dataset[index, ]
+test_data  <- dataset[-index, ]
+```
+
+```{r model_training, message=F}
+set.seed(42)
+model_mlp <- caret::train(Attrition ~ .,
+                         data = train_data,
+                         method = "rf",
+                         trControl = trainControl(method = "repeatedcv", 
+                                                  number = 10, 
+                                                  repeats = 5, 
+                                                  verboseIter = FALSE))
+```
+
+
+```{r variable importance, fig.height=8}
+#Checking variable importance for RF
+#Variable Importance
+varImp(object=model_mlp)
+
+
+#Plotting Varianle importance for GBM
+plot(varImp(object=model_mlp),main="RF - Variable Importance")
+
+```
+
+```{r explanations_using_lime, fig.height=5}
+explainer <- lime(train_data[,-2], model_mlp, n_bins = 5, n_permutations = 1000)
+actual <- test_data$Attrition
+pred <- predict(model_mlp, test_data, type = 'raw')
+
+# Run explain() on explainer
+explanation <- lime::explain(
+    test_data[9,-2], 
+    explainer    = explainer, 
+    n_labels     = 2, 
+    n_features   = 4,
+    kernel_width = 0.5)
+
+plot_features(explanation, ncol = 1)
+```
+
+
+
+
+
+
+
