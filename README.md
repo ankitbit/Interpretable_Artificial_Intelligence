@@ -11,3 +11,9 @@
 - Python [Lists](https://www.business-science.io/business/2017/09/18/hr_employee_attrition.html)
 
 - [AWS ML](https://ryan-cranfill.github.io/keras-aws-lambda/)
+- [UCR](http://uc-r.github.io/dalex)
+- [MIT Self Driving Cars](https://selfdrivingcars.mit.edu/resources/)
+- [NTHU Deep Learning](https://nthu-datalab.github.io/ml/)
+
+- [Daata visulaization[(https://towardsdatascience.com/a-comprehensive-guide-to-the-grammar-of-graphics-for-effective-visualization-of-multi-dimensional-1f92b4ed4149)
+- [Dipanjan Sarkar](https://github.com/dipanjanS?tab=repositories)
