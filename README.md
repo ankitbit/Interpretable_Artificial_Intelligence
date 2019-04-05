@@ -1,5 +1,18 @@
 # Interpretable_Artificial_Intelligence
 
+
+### Module 1: SHAP (Shapley Additive Exlanations)
+- [A Unified Approach to Interpreting Model Predictions](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions.pdf)
+- [Code](https://github.com/slundberg/shap)
+
+
+
+
+
+
+
+
+#### References
 - [H2O MLI Resources](https://github.com/h2oai/mli-resources)
 - [Fair Classification](https://github.com/h2oai/mli-resources)
 - [Tutorial](https://fatconference.org/static/tutorials/hall_interpretable18.pdf)
