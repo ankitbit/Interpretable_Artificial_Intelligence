@@ -1,7 +1,9 @@
 # Interpretable_Artificial_Intelligence
 
+### Module 1: LIME
+- [Implementing Regression with Keras and LIME](https://rstudio-pubs-static.s3.amazonaws.com/351198_33fe919a0364428bba3c848f4358fd5e.html)
 
-### Module 1: SHAP (Shapley Additive Exlanations)
+### Module 2: SHAP (Shapley Additive Exlanations)
 - [A Unified Approach to Interpreting Model Predictions](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions.pdf)
 - [Code](https://github.com/slundberg/shap)
 
