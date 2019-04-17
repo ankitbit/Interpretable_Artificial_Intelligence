@@ -32,3 +32,4 @@
 
 - [Daata visulaization[(https://towardsdatascience.com/a-comprehensive-guide-to-the-grammar-of-graphics-for-effective-visualization-of-multi-dimensional-1f92b4ed4149)
 - [Dipanjan Sarkar](https://github.com/dipanjanS?tab=repositories)
+- [Opening the Black Box](https://m-clark.github.io/introduction-to-machine-learning/opening-the-black-box.html)
